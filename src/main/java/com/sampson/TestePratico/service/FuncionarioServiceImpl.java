@@ -6,6 +6,8 @@ import com.sampson.TestePratico.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -73,8 +75,12 @@ public class FuncionarioServiceImpl implements FuncionarioService{
     }
 
     @Override
-    public void showSummedSalaries() {
-
+    public String showSummedSalaries() {
+        BigDecimal summedSalaries = BigDecimal.ZERO;
+        for (Funcionario funcionario : funcionarioRepository.findAll()) {
+            summedSalaries = summedSalaries.add(funcionario.getSalario());
+        }
+        return "Sum of salaries:" + NumberFormat.getCurrencyInstance().format(summedSalaries);
     }
 
     @Override

@@ -20,7 +20,7 @@ public interface FuncionarioService {
 
     public List<Funcionario> listAllAlphabetically();
 
-    public void showSummedSalaries();
+    public String showSummedSalaries();
 
     public void listAmountOfSalariesPerPerson();
 

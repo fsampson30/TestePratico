@@ -35,6 +35,11 @@ public class FuncionarioController {
         return funcionarioService.listAllAlphabetically();
     }
 
+    @GetMapping("/sum")
+    public String getSalariesSummed() {
+        return funcionarioService.showSummedSalaries();
+    }
+
     @DeleteMapping("/{nome}")
     public ResponseEntity<Void> deleteByName(@PathVariable String nome) {
         funcionarioService.removePersonByNome(nome);
