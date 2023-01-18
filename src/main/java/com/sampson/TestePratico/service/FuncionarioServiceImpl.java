@@ -6,6 +6,7 @@ import com.sampson.TestePratico.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +51,17 @@ public class FuncionarioServiceImpl implements FuncionarioService{
     }
 
     @Override
-    public void showOldestEmployee() {
-
+    public Funcionario showOldestEmployee() {
+        Funcionario oldest = new Funcionario();
+        int greaterAge = 0;
+        for (Funcionario funcionario : funcionarioRepository.findAll()) {
+            int currentAge = Math.abs(funcionario.getDataNascimento().compareTo(LocalDate.now()));
+            if (currentAge > greaterAge) {
+                greaterAge = currentAge;
+                oldest = funcionario;
+            }
+        }
+        return oldest;
     }
 
     @Override

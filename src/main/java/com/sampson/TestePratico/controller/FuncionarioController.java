@@ -16,17 +16,22 @@ public class FuncionarioController {
     private FuncionarioServiceImpl funcionarioService;
 
     @GetMapping
-    public List<Funcionario> listAll(){
+    public List<Funcionario> listAll() {
         return funcionarioService.listAll();
     }
 
     @GetMapping("/niver")
-    public List<Funcionario> birthdayList(){
+    public List<Funcionario> getBirthdayList() {
         return funcionarioService.showBirthdayList();
     }
 
+    @GetMapping("/older")
+    public Funcionario getOldestEmployee() {
+        return funcionarioService.showOldestEmployee();
+    }
+
     @DeleteMapping("/{nome}")
-    public ResponseEntity<Void> deleteByName(@PathVariable String nome){
+    public ResponseEntity<Void> deleteByName(@PathVariable String nome) {
         funcionarioService.removePersonByNome(nome);
         return ResponseEntity.noContent().build();
     }
