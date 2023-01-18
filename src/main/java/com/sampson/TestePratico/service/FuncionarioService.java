@@ -18,7 +18,7 @@ public interface FuncionarioService {
 
     public Funcionario showOldestEmployee();
 
-    public void listAllAlphabetically();
+    public List<Funcionario> listAllAlphabetically();
 
     public void showSummedSalaries();
 

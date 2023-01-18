@@ -30,6 +30,11 @@ public class FuncionarioController {
         return funcionarioService.showOldestEmployee();
     }
 
+    @GetMapping("/alphabetic")
+    public List<Funcionario> listAllAlphabetically() {
+        return funcionarioService.listAllAlphabetically();
+    }
+
     @DeleteMapping("/{nome}")
     public ResponseEntity<Void> deleteByName(@PathVariable String nome) {
         funcionarioService.removePersonByNome(nome);
