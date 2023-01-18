@@ -1,5 +1,6 @@
 package com.sampson.TestePratico.controller;
 
+import com.sampson.TestePratico.dto.NameAmountSalariesDTO;
 import com.sampson.TestePratico.model.Funcionario;
 import com.sampson.TestePratico.service.FuncionarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,11 @@ public class FuncionarioController {
     @GetMapping("/sum")
     public String getSalariesSummed() {
         return funcionarioService.showSummedSalaries();
+    }
+
+    @GetMapping("/salaries")
+    public List<NameAmountSalariesDTO> getAmountOfSalaries() {
+        return funcionarioService.listAmountOfSalariesPerPerson();
     }
 
     @DeleteMapping("/{nome}")

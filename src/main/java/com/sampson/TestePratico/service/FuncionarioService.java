@@ -1,5 +1,6 @@
 package com.sampson.TestePratico.service;
 
+import com.sampson.TestePratico.dto.NameAmountSalariesDTO;
 import com.sampson.TestePratico.model.Funcionario;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public interface FuncionarioService {
 
     public String showSummedSalaries();
 
-    public void listAmountOfSalariesPerPerson();
+    public List<NameAmountSalariesDTO> listAmountOfSalariesPerPerson();
 
 
 }

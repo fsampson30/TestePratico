@@ -1,5 +1,6 @@
 package com.sampson.TestePratico.service;
 
+import com.sampson.TestePratico.dto.NameAmountSalariesDTO;
 import com.sampson.TestePratico.exception.BadRequestException;
 import com.sampson.TestePratico.model.Funcionario;
 import com.sampson.TestePratico.repository.FuncionarioRepository;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -15,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class FuncionarioServiceImpl implements FuncionarioService{
+public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Autowired
     private FuncionarioRepository funcionarioRepository;
@@ -84,7 +86,12 @@ public class FuncionarioServiceImpl implements FuncionarioService{
     }
 
     @Override
-    public void listAmountOfSalariesPerPerson() {
-
+    public List<NameAmountSalariesDTO> listAmountOfSalariesPerPerson() {
+        List<NameAmountSalariesDTO> returnList = new ArrayList<>();
+        for (Funcionario funcionario : funcionarioRepository.findAll()) {
+            BigDecimal amount = funcionario.getSalario().divide(BigDecimal.valueOf(1212.00), 2, RoundingMode.HALF_UP);
+            returnList.add(new NameAmountSalariesDTO(funcionario.getNome(),amount));
+        }
+        return returnList;
     }
 }
