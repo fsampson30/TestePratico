@@ -1,5 +1,6 @@
 package com.sampson.TestePratico.service;
 
+import com.sampson.TestePratico.exception.BadRequestException;
 import com.sampson.TestePratico.model.Funcionario;
 import com.sampson.TestePratico.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class FuncionarioServiceImpl implements FuncionarioService{
 
     @Override
     public void removePersonByNome(String nome) {
-        Funcionario byNome = funcionarioRepository.findByNome(nome);
-        funcionarioRepository.delete(byNome);
+        funcionarioRepository.delete(funcionarioRepository.findByNome(nome)
+                .orElseThrow(() -> new BadRequestException("Funcionário não encontrado")));
     }
 
     @Override

@@ -20,7 +20,7 @@ public class FuncionarioController {
         return funcionarioService.listAll();
     }
 
-    @DeleteMapping("/name")
+    @DeleteMapping("/{nome}")
     public ResponseEntity<Void> deleteByName(@PathVariable String nome){
         funcionarioService.removePersonByNome(nome);
         return ResponseEntity.noContent().build();
