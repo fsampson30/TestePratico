@@ -10,11 +10,14 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Entity
-public class Funcionario extends Pessoa {
+public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    private String nome;
+    private LocalDate dataNascimento;
 
     private BigDecimal salario;
     private String funcao;
@@ -23,9 +26,35 @@ public class Funcionario extends Pessoa {
     }
 
     public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao) {
-        super(nome, dataNascimento);
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
         this.salario = salario;
         this.funcao = funcao;
+    }
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public BigDecimal getSalario() {
@@ -47,8 +76,8 @@ public class Funcionario extends Pessoa {
     @Override
     public String toString() {
         return "Funcionário { " +
-                "Nome: " + super.getNome() + " - " +
-                "Data de Nascimento: " + super.getDataNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " - " +
+                "Nome: " + nome + " - " +
+                "Data de Nascimento: " + dataNascimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " - " +
                 "salário: " + NumberFormat.getCurrencyInstance().format(salario) + " - " +
                 "função: " + funcao + "}" + '\n';
     }

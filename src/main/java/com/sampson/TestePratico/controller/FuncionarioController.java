@@ -3,9 +3,8 @@ package com.sampson.TestePratico.controller;
 import com.sampson.TestePratico.model.Funcionario;
 import com.sampson.TestePratico.service.FuncionarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +18,11 @@ public class FuncionarioController {
     @GetMapping
     public List<Funcionario> listAll(){
         return funcionarioService.listAll();
+    }
+
+    @DeleteMapping("/name")
+    public ResponseEntity<Void> deleteByName(@PathVariable String nome){
+        funcionarioService.removePersonByNome(nome);
+        return ResponseEntity.noContent().build();
     }
 }

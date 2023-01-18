@@ -8,7 +8,7 @@ public interface FuncionarioService {
 
     public List<Funcionario> listAll();
 
-    public void removePersonByName(String name);
+    public void removePersonByNome(String nome);
 
     public void setRaise();
 

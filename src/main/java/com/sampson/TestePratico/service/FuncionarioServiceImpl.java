@@ -20,8 +20,9 @@ public class FuncionarioServiceImpl implements FuncionarioService{
     }
 
     @Override
-    public void removePersonByName(String name) {
-
+    public void removePersonByNome(String nome) {
+        Funcionario byNome = funcionarioRepository.findByNome(nome);
+        funcionarioRepository.delete(byNome);
     }
 
     @Override

@@ -1,0 +1,10 @@
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('Maria','2000-10-18','2009.44','Operador');
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('João','1990-05-12','2284.38','Operador');
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('Caio','1961-05-02','9836.14','Coordenador');
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('Miguel','1988-10-14','19119.88','Diretor');
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('Alice','1995-05-01','2234.68','Recepcionista');
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('Heitor','1999-11-19','1582.72','Operador');
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('Arthur','1993-03-31','4071.84','Contador');
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('Laura','1994-07-08','3017.45','Gerente');
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('Heloisa','2003-05-24','1606.85','Eletricista');
+INSERT INTO funcionario (nome,data_Nascimento,salario,funcao) values ('Helena','1996-09-02','2799.93','Gerente');
