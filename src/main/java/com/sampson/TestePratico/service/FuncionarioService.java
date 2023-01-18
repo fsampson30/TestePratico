@@ -14,7 +14,7 @@ public interface FuncionarioService {
 
     public void mapEmployees();
 
-    public void showBirthdayList();
+    public List<Funcionario> showBirthdayList();
 
     public void showOldestEmployee();
 

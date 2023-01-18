@@ -20,6 +20,11 @@ public class FuncionarioController {
         return funcionarioService.listAll();
     }
 
+    @GetMapping("/niver")
+    public List<Funcionario> birthdayList(){
+        return funcionarioService.showBirthdayList();
+    }
+
     @DeleteMapping("/{nome}")
     public ResponseEntity<Void> deleteByName(@PathVariable String nome){
         funcionarioService.removePersonByNome(nome);

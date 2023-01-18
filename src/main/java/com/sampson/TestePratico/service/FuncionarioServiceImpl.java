@@ -6,6 +6,7 @@ import com.sampson.TestePratico.repository.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -37,8 +38,15 @@ public class FuncionarioServiceImpl implements FuncionarioService{
     }
 
     @Override
-    public void showBirthdayList() {
-
+    public List<Funcionario> showBirthdayList() {
+        ArrayList<Funcionario> birthdayList = new ArrayList<>();
+        for (Funcionario funcionario : funcionarioRepository.findAll()) {
+            if (funcionario.getDataNascimento().getMonthValue() == 10 ||
+                    funcionario.getDataNascimento().getMonthValue() == 12) {
+                birthdayList.add(funcionario);
+            }
+        }
+        return birthdayList;
     }
 
     @Override
