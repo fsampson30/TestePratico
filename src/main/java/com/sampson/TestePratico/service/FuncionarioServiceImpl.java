@@ -45,8 +45,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Override
     public Map<String, List<Funcionario>> mapEmployees() {
-        Map<String, List<Funcionario>> groupedList = funcionarioRepository.findAll().stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
-        return groupedList;
+        return funcionarioRepository.findAll().stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
     }
 
 
