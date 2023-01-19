@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,9 +44,11 @@ public class FuncionarioServiceImpl implements FuncionarioService {
     }
 
     @Override
-    public void mapEmployees() {
-
+    public Map<String, List<Funcionario>> mapEmployees() {
+        Map<String, List<Funcionario>> groupedList = funcionarioRepository.findAll().stream().collect(Collectors.groupingBy(Funcionario::getFuncao));
+        return groupedList;
     }
+
 
     @Override
     public List<Funcionario> showBirthdayList() {
@@ -93,7 +96,7 @@ public class FuncionarioServiceImpl implements FuncionarioService {
         List<NameAmountSalariesDTO> returnList = new ArrayList<>();
         for (Funcionario funcionario : funcionarioRepository.findAll()) {
             BigDecimal amount = funcionario.getSalario().divide(BigDecimal.valueOf(1212.00), 2, RoundingMode.HALF_UP);
-            returnList.add(new NameAmountSalariesDTO(funcionario.getNome(),amount));
+            returnList.add(new NameAmountSalariesDTO(funcionario.getNome(), amount));
         }
         return returnList;
     }

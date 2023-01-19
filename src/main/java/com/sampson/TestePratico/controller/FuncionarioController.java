@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/funcionarios")
@@ -50,6 +51,11 @@ public class FuncionarioController {
     public ResponseEntity<Void> setRaise(){
         funcionarioService.setRaise();
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/grouped")
+    public Map<String, List<Funcionario>> getMappedEmployees(){
+        return funcionarioService.mapEmployees();
     }
 
     @DeleteMapping("/{nome}")
