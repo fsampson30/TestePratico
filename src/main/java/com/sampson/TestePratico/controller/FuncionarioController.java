@@ -46,6 +46,12 @@ public class FuncionarioController {
         return funcionarioService.listAmountOfSalariesPerPerson();
     }
 
+    @PostMapping("/raise")
+    public ResponseEntity<Void> setRaise(){
+        funcionarioService.setRaise();
+        return ResponseEntity.noContent().build();
+    }
+
     @DeleteMapping("/{nome}")
     public ResponseEntity<Void> deleteByName(@PathVariable String nome) {
         funcionarioService.removePersonByNome(nome);

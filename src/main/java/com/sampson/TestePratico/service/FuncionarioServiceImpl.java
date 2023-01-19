@@ -36,7 +36,10 @@ public class FuncionarioServiceImpl implements FuncionarioService {
 
     @Override
     public void setRaise() {
-
+        for (Funcionario funcionario : funcionarioRepository.findAll()) {
+            funcionario.setSalario(funcionario.getSalario().multiply(BigDecimal.valueOf(1.1)));
+            funcionarioRepository.save(funcionario);
+        }
     }
 
     @Override
